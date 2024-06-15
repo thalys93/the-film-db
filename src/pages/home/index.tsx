@@ -85,13 +85,13 @@ function Home() {
                   </button>
                 </Link>
 
-                <Link to="/about">
+                <a href='https://github.com/thalys93/the-film-db/tree/main' target='_blank' rel='noopener'>
                   <button className='bg-red-500 text-stone-50 p-3 w-[10rem] items-center justify-center hover:bg-red-300 transition-all'>
                     <span>
                       Saiba Mais
                     </span>
                   </button>
-                </Link>
+                </a>
               </article>
             </section>
 
