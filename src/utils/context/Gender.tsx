@@ -2,9 +2,9 @@ import React from "react";
 
 export const SelectedGenderContext = React.createContext({
     selectedFilmGender: 0,
-    setSelectedFilmGender: (gender: number) => { },
+    setSelectedFilmGender: (_gender: number) => { },
     selectedSeriesGender: 0,
-    setSelectedSeriesGender: (gender: number) => { },
+    setSelectedSeriesGender: (_gender: number) => { },
 });
 
 export function SelectedGenderProvider({ children }) {

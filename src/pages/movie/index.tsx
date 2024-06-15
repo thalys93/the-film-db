@@ -3,7 +3,7 @@ import { Parallax, ParallaxBannerLayer } from 'react-scroll-parallax'
 import NavigationBar from '../../components/navbar'
 import { Col, Container, Row } from 'react-bootstrap'
 import { MovieInt, getBrasilianMovie } from '../../utils/api/movies'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { ArrowLeft, Star, Users } from '@phosphor-icons/react'
 import { WindowSizeContext } from '../../utils/context/Responsive'
 
