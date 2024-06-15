@@ -1,4 +1,9 @@
-# The Film DB
+# The Film DB - APLICATIVO EM PRODUÇÃO
+
+link do app: [The Film DB](https://the-film-db.web.app/)
+
+```a cada atualização o aplicativo faz o deploy automaticamente usando o github actions e o firebase.```
+
 
 The Film DB é uma aplicação em React que consome a API do TMDB (The Movie Database) para exibir informações sobre filmes. A interface apresenta uma lista de filmes e series e ao clicar em um filme específico, exibe informações detalhadas sobre ele.
 Além de possuir filtragem por Gêneros e por Nome.
