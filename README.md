@@ -1,30 +1,43 @@
-# React + TypeScript + Vite
+# The Film DB
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Film DB é uma aplicação em React que consome a API do TMDB (The Movie Database) para exibir informações sobre filmes. A interface apresenta uma lista de filmes e series e ao clicar em um filme específico, exibe informações detalhadas sobre ele.
+Além de possuir filtragem por Gêneros e por Nome.
 
-Currently, two official plugins are available:
+## Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React.js
+- Axios (para fazer requisições HTTP)
+- React Router (para navegação entre páginas)
+- TMDB API
 
-## Expanding the ESLint configuration
+## Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Listar filmes populares na página inicial
+- Exibir detalhes de um filme ao clicar nele
+- Navegação entre a lista de filmes e a página de detalhes
 
-- Configure the top-level `parserOptions` property like this:
+## Instruções para Rodar o Projeto Localmente
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Pré-requisitos
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Node.js instalado (recomendado a versão LTS)
+- npm ou yarn instalado
+
+### Passos para rodar o projeto
+
+1. Clone o repositório para o seu ambiente local:
+
+   ```bash
+   git clone https://github.com/thalys93/the-film-db.git
+   cd the-film-db
+
+2. Instale as Dependencias do Node
+   ```bash
+   npm install
+   
+3. Inicie o Servidor de Desenvolvimento
+   ```bash
+   npm run dev
+
+### Atenção, caso queira realizar um FORK
+criar as chaves de acesso do TMDB e substituir na Aplicação
