@@ -8,6 +8,7 @@ export default {
   theme: {
     fontFamily: {
       'robt': ['Roboto', 'sans-serif'],
+      'robtMono': ["Roboto Mono", "monospace"],
       'monts': ['Montserrat', 'sans-serif'],      
     },
     screens: {

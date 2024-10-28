@@ -1,3 +1,4 @@
-*{
+* {
     transition: all 0.6s;
+    background: var(--slogan-background-color);    
 }
