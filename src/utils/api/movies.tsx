@@ -14,7 +14,7 @@ export interface MoviesProps {
     title?: string
     video?: boolean
     vote_average?: number
-    vote_count?: number
+    vote_count?: number    
 }
 
 export interface MovieInt {
@@ -161,7 +161,7 @@ export interface commonRequest {
     total_results: number
 }
 
-export const getBrasilianMovies = async () => {
+export const getBrasilianMovies = async (page?: number) => {
     try {
         return await API_URL.get(`discover/movie`, {
             headers: {
@@ -172,7 +172,7 @@ export const getBrasilianMovies = async () => {
                 api_key: apiKey,
                 include_adult: false,
                 include_video: false,
-                page: 1,
+                page: page ? page : 1 ,
                 language: 'pt-BR',
                 region: 'brasil',
                 sort_by: 'popularity.desc'
