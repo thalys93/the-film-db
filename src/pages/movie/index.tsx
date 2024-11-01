@@ -42,7 +42,7 @@ function Movie_Details() {
     return (
         <>
             <Parallax>
-                <NavigationBar />
+                {/* <NavigationBar /> */}
                 <Container>
                     <Row>                     
                         <section className='animate__animated animate__fadeIn -z-50'>

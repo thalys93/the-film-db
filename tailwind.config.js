@@ -9,7 +9,8 @@ export default {
     fontFamily: {
       'robt': ['Roboto', 'sans-serif'],
       'robtMono': ["Roboto Mono", "monospace"],
-      'monts': ['Montserrat', 'sans-serif'],      
+      'monts': ['Montserrat', 'sans-serif'],   
+      'inter': ['Inter', 'sans-serif'],   
     },
     screens: {
       'sm': '576px',

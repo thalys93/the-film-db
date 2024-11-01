@@ -49,7 +49,7 @@ function BillingCard({ bill }: { bill: billingProps }) {
     //? Componente de Card
 
     return (
-        <Card className={`rounded w-[16rem] h-[23rem] shadow-sm`} style={{ background: "rgb(30,28,32)", borderColor: "rgb(30,28,32)" }}>
+        <Card className={`rounded w-[16rem] h-[23rem] shadow-sm bg-opacity-50 pricingBoxStyle`}>
             <Card.Body className='text-stone-50'>
                 <div className='flex flex-row gap-3 items-center mb-3 h-[7rem]'>
                     <Card.Text className='text-stone-400 hover:text-yellow-300'>{iconTypes(bill.name)}</Card.Text>

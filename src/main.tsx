@@ -8,13 +8,16 @@ import './assets/styles/global.css'
 import './assets/styles/fonts.css'
 import 'animate.css';
 import { SelectedGenderProvider } from './utils/context/Gender.tsx'
+import { SloganProvider } from './utils/context/Slogan.tsx'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(  
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <SelectedGenderProvider>
-    <ParallaxProvider>
-      <WindowSizeProvider>
-        <Routes />
-      </WindowSizeProvider>
-    </ParallaxProvider>
-  </SelectedGenderProvider>  
+    <WindowSizeProvider>
+      <SloganProvider>
+        <ParallaxProvider>
+          <Routes />
+        </ParallaxProvider>
+      </SloganProvider>
+    </WindowSizeProvider>
+  </SelectedGenderProvider>
 )
