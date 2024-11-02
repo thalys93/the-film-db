@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react'
 import { Col, Container, Row, Spinner } from 'react-bootstrap'
 import FilmCard from '../../components/filmCard'
-import { MoviesProps, commonRequest, getBrasilianMovies, getBrasilianMoviesByGender } from '../../utils/api/movies'
+import { GendersProps, MoviesProps, commonRequest, getBrasilianMovies, getBrasilianMoviesByGender, getFilmGenders } from '../../utils/api/movies'
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Categories from '../../components/categoriesList';
-import { SelectedGenderContext } from '../../utils/context/Gender';
 import { Parallax, ParallaxBanner } from 'react-scroll-parallax';
 import { WindowSizeContext } from '../../utils/context/Responsive';
 import { Info, Play, PlusCircle } from '@phosphor-icons/react';
 import { FilmCardTypes } from '../../utils/helpers/enums';
+import FilterNav from '../../components/filter-nav/FilterNav';
+import { SloganContext } from '../../utils/context/Slogan';
 
 function Movies() {
   const [moviesList, setMoviesList] = React.useState<MoviesProps[]>([])
+  const [filteredList, setFilteredList] = React.useState<MoviesProps[]>([])
+  const [searchTxt, setSearchTxt] = React.useState<string>('')
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
-  const { selectedFilmGender } = React.useContext(SelectedGenderContext);
+  const [genders, setGenders] = React.useState<GendersProps[]>([])
+  const [selectedFilmGender, setSelectedFilmGender] = React.useState<number>(0)
   let timeoutValue = 1000
   const winSize = React.useContext(WindowSizeContext)
 
@@ -25,6 +28,7 @@ function Movies() {
         await getBrasilianMoviesByGender(selectedFilmGender).then((res: commonRequest) => {
           if (res.results !== undefined) {
             setMoviesList(res.results)
+            setFilteredList(res.results)
           }
         }).catch((err) => {
           console.log(err)
@@ -33,6 +37,7 @@ function Movies() {
         await getBrasilianMovies().then((res: commonRequest) => {
           if (res.results !== undefined) {
             setMoviesList(res.results)
+            setFilteredList(res.results)
           }
         }).catch((err) => {
           console.log(err)
@@ -43,6 +48,20 @@ function Movies() {
     getMovies()
   }, [selectedFilmGender])
 
+  useEffect(() => {
+    async function getGenders() {
+      await getFilmGenders().then((res) => {
+        if (res !== null) {
+          setGenders(res.genres)
+        }
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
+
+    getGenders()
+  }, [])
+
   async function handleShowMoreFilms(count: number) {
     setIsLoading(true)
 
@@ -50,6 +69,7 @@ function Movies() {
       if (res.results !== undefined) {
         setTimeout(() => {
           setMoviesList([...moviesList, ...res.results])
+          setFilteredList([...filteredList, ...res.results])
         }, timeoutValue)
       }
     }).catch((err) => {
@@ -63,6 +83,25 @@ function Movies() {
       }, timeoutValue)
     })
   }
+
+  function handleSearchFilms(text: string) {
+    setSearchTxt(text)
+    if (text !== '') {
+      setFilteredList(moviesList.filter((movie) => movie.title.toLowerCase().includes(text.toLowerCase())))
+    } else {
+      setFilteredList(moviesList)
+    }
+  }
+
+  function handleSelectGender(id: number) {
+    if (id !== selectedFilmGender) {
+      setSelectedFilmGender(id)
+    } else {
+      setSelectedFilmGender(0)
+    }
+  }
+
+  const { dynamicSlogan } = React.useContext(SloganContext)
 
   return (
     <>
@@ -81,12 +120,12 @@ function Movies() {
                           <p className='text-stone-300 font-robt capitalize text-md w-[35rem] text-left mb-3'>{movie.overview ? movie.overview.slice(0, 240) + '...' : 'Sem descrição disponível.'}</p>
 
                           {movie.video ? (
-                            <button className='bg-red-500 w-[15rem] items-center flex flex-row justify-center gap-3 p-2 rounded-sm transition-all hover:bg-red-300'>
+                            <button className={` ${dynamicSlogan.sloganCSS} bg-red-500 w-[15rem] items-center flex flex-row justify-center gap-3 p-2 rounded-sm transition-all hover:bg-red-300`}>
                               <Play size={25} color='white' className='transition-all hover:scale-95' />
                               <span className='text-stone-50 font-robt uppercase'> Veja o Trailer </span>
                             </button>
                           ) : (
-                            <button className='bg-red-500 w-[15rem] items-center flex flex-row justify-center gap-3 p-2 rounded-sm transition-all hover:bg-red-300'>
+                            <button className={` ${dynamicSlogan.sloganCSS} bg-red-500 w-[15rem] items-center flex flex-row justify-center gap-3 p-2 rounded-sm transition-all hover:bg-red-300`}>
                               <Info size={25} color='white' weight='fill' className='transition-all hover:scale-95' />
                               <span className='text-stone-50 font-robt uppercase'> Saiba Mais </span>
                             </button>
@@ -110,38 +149,64 @@ function Movies() {
         <Row className='animate__animated animate__fadeIn'>
           <Col>
             {winSize > 768 ? (
-              <section className='flex flex-col gap-4 justify-end items-end'>
+              <section className='flex flex-col gap-4'>
+                <article className='ml-[5rem] mt-3'>
+                  <FilterNav
+                    type='movies'
+                    genders={genders}
+                    searchTerm={searchTxt}
+                    onFilter={handleSelectGender}
+                    onSearch={handleSearchFilms}
+                  />
+                </article>
                 <article className='flex flex-wrap gap-4 justify-center'>
-                  {moviesList.map((movie) => (
+                  {filteredList.map((movie) => (
                     <div key={movie.id}>
                       <FilmCard film={movie} type={FilmCardTypes.list} />
                     </div>
                   ))}
                 </article>
-                <button
-                  disabled={isLoading}
-                  onClick={() => handleShowMoreFilms(moviesList.length)}
-                  className='bg-red-500 w-[10rem] h-[3rem] items-center flex flex-row justify-center gap-3 p-2 rounded transition-all hover:bg-red-300 mb-5 relative mr-[10rem] shadow-md'>
-                  {isLoading ? (
-                    <Spinner className='text-stone-50' />
-                  ) : (
-                    <>
-                      <PlusCircle size={25} color='white' weight='fill' className='transition-all hover:scale-95' />
-                      <span className='text-stone-50 font-robt uppercase'> Ver mais </span>
-                    </>
-                  )}
-                </button>
+                <div className='w-[70%] bg-stone-50 h-[0.5px] mb-[4.5rem] absolute right-[22rem]'></div>
+                <article className='items-end flex justify-end'>
+                  <button
+                    disabled={isLoading}
+                    onClick={() => handleShowMoreFilms(moviesList.length)}
+                    className={`${dynamicSlogan.sloganCSS} bg-red-500 w-[10rem] h-[3rem] items-center flex flex-row justify-center gap-3 p-2 rounded transition-all hover:bg-red-300 mb-5 relative mr-[10rem] shadow-md`}>
+                    {isLoading ? (
+                      <Spinner className='text-stone-50' />
+                    ) : (
+                      <>
+                        <PlusCircle size={25} color='white' weight='fill' className='transition-all hover:scale-95' />
+                        <span className='text-stone-50 font-robt uppercase'> Ver mais </span>
+                      </>
+                    )}
+                  </button>
+
+                  {/* por ora desativado, sem a necessidade de botão  */}
+                  {/* <ButtonToolbar>
+                    <ButtonGroup>
+                      {moviesList.map((_, index) => (
+                        <Button
+                          key={index}
+                          variant={index ? 'primary' : 'secondary'}
+                          onClick={() => handleShowMoreFilms(index)}>
+                          {index}
+                        </Button>
+                      ))}
+                    </ButtonGroup>
+                  </ButtonToolbar> */}
+                </article>
               </section>
             ) : (
               <section>
-                <Carousel                 
-                showArrows={true} 
-                showStatus={false} 
-                showThumbs={false} 
-                infiniteLoop={true}                 
-                transitionTime={200}                 
-                stopOnHover={true} 
-                showIndicators={false}>
+                <Carousel
+                  showArrows={true}
+                  showStatus={false}
+                  showThumbs={false}
+                  infiniteLoop={true}
+                  transitionTime={200}
+                  stopOnHover={true}
+                  showIndicators={false}>
                   {moviesList.map((movie) => (
                     <section key={movie.id} className='flex justify-center items-center'>
                       <FilmCard film={movie} type={FilmCardTypes.carousel} />
@@ -164,7 +229,7 @@ function Movies() {
                   </button>
 
                   <button className='border-[1px] border-red-500 w-[10rem] h-[3rem] items-center flex flex-row justify-center gap-3 p-2 rounded transition-all hover:bg-red-300 mb-5 relative shadow-md group'>
-                      <span className='text-red-500 font-robt uppercase group-hover:text-stone-50'> Ver Todos </span>
+                    <span className='text-red-500 font-robt uppercase group-hover:text-stone-50'> Ver Todos </span>
                   </button>
                 </article>
               </section>

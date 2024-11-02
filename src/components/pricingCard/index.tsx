@@ -1,6 +1,8 @@
 import { billingProps } from '../../utils/api/billing'
 import { Card } from 'react-bootstrap'
 import { FilmReel, FilmSlate, Popcorn } from '@phosphor-icons/react'
+import { SloganContext } from '../../utils/context/Slogan'
+import React from 'react'
 
 function BillingCard({ bill }: { bill: billingProps }) {
 
@@ -9,11 +11,11 @@ function BillingCard({ bill }: { bill: billingProps }) {
     function iconTypes(billing: string) {
         switch (billing) {
             case 'Plano Básico':
-                return <Popcorn size={iconSize} className='text-yellow-500 shadow' weight='duotone' />
+                return <Popcorn size={iconSize} style={{ color: dynamicSlogan.emphasisText }} className='text-yellow-500 shadow' weight='duotone' />
             case 'Plano Padrão':
-                return <FilmSlate size={iconSize} className='text-red-400 shadow' weight='duotone' />
+                return <FilmSlate size={iconSize} style={{ color: dynamicSlogan.emphasisText }}  className='text-red-400 shadow' weight='duotone' />
             case 'Plano Premium':
-                return <FilmReel size={iconSize} className='text-sky-400 shadow' weight='duotone' />
+                return <FilmReel size={iconSize} style={{ color: dynamicSlogan.emphasisText }}  className='text-sky-400 shadow' weight='duotone' />
             default:
                 return null
         }
@@ -46,16 +48,17 @@ function BillingCard({ bill }: { bill: billingProps }) {
         }
     }
 
-    //? Componente de Card
+
+    const { dynamicSlogan } = React.useContext(SloganContext)
 
     return (
-        <Card className={`rounded w-[16rem] h-[23rem] shadow-sm bg-opacity-50 pricingBoxStyle`}>
+        <Card className={`rounded w-[16rem] h-[23rem] shadow-sm bg-opacity-50 ${dynamicSlogan.sloganCSS}`}>
             <Card.Body className='text-stone-50'>
                 <div className='flex flex-row gap-3 items-center mb-3 h-[7rem]'>
                     <Card.Text className='text-stone-400 hover:text-yellow-300'>{iconTypes(bill.name)}</Card.Text>
                     <Card.Text className='text-stone-200 select-none text-md font-robtMono uppercase'>
                         {truncateText(bill.description, bill.name).description} {''}
-                        <b className='transition-all text-red-500 hover:text-red-300'>
+                        <b style={{ color: dynamicSlogan.emphasisText }} className='transition-all text-red-500 hover:text-red-300'>
                             {truncateText(bill.description, bill.name).boldText}
                         </b>
                     </Card.Text>

@@ -24,7 +24,7 @@ function Home() {
 
             <article className='flex flex-row gap-4 items-center justify-center'>
               <a href='https://github.com/thalys93/the-film-db/tree/main' target='_blank' rel='noopener'> {/* todo: mudar o link do github */}
-                <button style={{ backgroundColor: dynamicSlogan?.sloganGradient?.background }} className='bg-red-500 text-stone-50 p-2 w-[10rem] items-center justify-center hover:bg-red-300 transition-all'>
+                <button className={`${dynamicSlogan.sloganCSS} bg-red-500 text-stone-50 p-2 w-[10rem] items-center justify-center hover:bg-red-300 transition-all`}>
                   <span className='uppercase '>
                     Saiba Mais
                   </span>
@@ -67,7 +67,7 @@ function Home() {
                   </div>
                 ))}
               </article>
-              <button className='bg-red-500 p-3 w-[15rem] items-center justify-center mt-10 rounded-sm shadow-lg transition-all hover:bg-red-300 z-50'>
+              <button className={`${dynamicSlogan.sloganCSS} bg-red-500 p-3 w-[15rem] items-center justify-center mt-10 rounded-sm shadow-lg transition-all hover:bg-red-300 z-50`}>
                 <span className='text-xl font-robtMono text-stone-50 transition-all uppercase'> Quero Assinar</span>
               </button>
 

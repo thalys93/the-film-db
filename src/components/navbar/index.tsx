@@ -4,6 +4,7 @@ import { Container, Navbar, Offcanvas } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { List } from '@phosphor-icons/react'
 import { useLocation } from 'react-router-dom'
+import { SloganContext } from '../../utils/context/Slogan'
 
 function NavigationBar() {
     const options = [
@@ -24,9 +25,10 @@ function NavigationBar() {
 
     const location = useLocation()
     const winSize = useContext(WindowSizeContext)
+    const { dynamicSlogan } = React.useContext(SloganContext)
 
     return winSize < 768 ? (
-        <Navbar sticky='top' style={{ backgroundColor: "#1c1917" }}>
+        <Navbar sticky='top' className={`${dynamicSlogan.sloganCSS}`}>
             <Container>
                 {!show && (
                     <>
@@ -41,7 +43,7 @@ function NavigationBar() {
                         </button>
                     </>
                 )}
-                <Offcanvas show={show} onhide={() => closeMenu()} className="bg-stone-900" bsPrefix='offcanvas' scroll backdrop>
+                <Offcanvas show={show} onhide={() => closeMenu()} className={`${dynamicSlogan.sloganCSS}`} bsPrefix='offcanvas' scroll backdrop>
                     <Offcanvas.Header closeButton={false} className='flex flex-row items-start justify-start'>
                         <Offcanvas.Title >
                             <div className='flex flex-row gap-1 text-slate-200 hover:text-red-400 transition-all font-monts items-center justify-center'>
@@ -52,19 +54,28 @@ function NavigationBar() {
                     </Offcanvas.Header>
                     <ul className='flex flex-col gap-2 justify-around items-start mt-3 ml-5'>
                         {options.map((opt, index) => (
-                            <Link to={opt.link} key={index} className='gap-3 flex flex-col w-[10rem]'>
-                                <span className='text-slate-200 hover:text-stone-50 transition-all font-monts uppercase p-2 bg-red-500 hover:bg-red-600 shadow-lg'>
+                            <Link
+                                to={opt.link}
+                                key={index}
+                                className='gap-3 flex flex-col w-[10rem]'>
+                                <span
+                                    style={{ backgroundColor: dynamicSlogan?.backgroundColor }}
+                                    className='text-slate-200 hover:text-stone-50 transition-all font-monts uppercase p-2 bg-red-500 hover:bg-red-600 shadow-lg'>
                                     {opt.name}
                                 </span>
                             </Link>
                         ))}
                         <Link to={"/about"} className='gap-3 flex flex-col w-[10rem]'>
-                            <span className='text-slate-200 hover:text-stone-50 transition-all font-monts uppercase p-2 bg-red-500 hover:bg-red-600 shadow-lg'>
+                            <span 
+                            style={{ backgroundColor: dynamicSlogan?.backgroundColor }}
+                            className='text-slate-200 hover:text-stone-50 transition-all font-monts uppercase p-2 bg-red-500 hover:bg-red-600 shadow-lg'>
                                 Sobre
                             </span>
                         </Link>
                         <button className='gap-3 flex flex-col mt-[25rem]' onClick={() => closeMenu()}>
-                            <span className='w-[10rem] text-left text-red-500 hover:text-red-50 transition-all font-monts uppercase p-2 border-[1px] border-red-500 hover:bg-red-600 shadow-lg'>
+                            <span 
+                            style={{ borderColor: dynamicSlogan?.backgroundColor, color: 'white' }}
+                            className='w-[10rem] text-left text-red-500 hover:text-red-50 transition-all font-monts uppercase p-2 border-[2px] border-red-500 hover:bg-red-600 shadow-lg'>
                                 Fechar
                             </span>
                         </button>

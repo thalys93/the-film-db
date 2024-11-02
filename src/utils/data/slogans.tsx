@@ -4,10 +4,9 @@ export interface slogansInterface {
     shortdescription: string;
     day: string
     sloganImage?: string
-    sloganGradient?: {
-        backgroundColor: string // todo: tbm pode servir para btn
-        background: string
-    }
+    backgroundColor?: string
+    sloganCSS?: string
+    emphasisText?: string
 }
 
 export const slogans: slogansInterface[] = [
@@ -17,10 +16,9 @@ export const slogans: slogansInterface[] = [
         shortdescription: "Inicie sua semana imerso em histórias mágicas.",
         day: "Segunda-feira",
         sloganImage: "https://res.cloudinary.com/dh39ahmpj/image/upload/v1729206404/the-film-db/parallaxes/parallax6_fdpm4q.jpg",
-        sloganGradient: {
-            backgroundColor: "rgba(49,6,23,1)",
-            background: "linear-gradient(335deg, rgba(49,6,23,1) 29%, rgba(8,2,25,1) 100%)"
-        }
+        backgroundColor: "rgba(49,6,23,1)",
+        sloganCSS: "segundaCard",
+        emphasisText: "#bb1758"
     },
     {
         id: 2,
@@ -28,10 +26,9 @@ export const slogans: slogansInterface[] = [
         shortdescription: "Dê um toque de sucesso à sua terça com grandes filmes.",
         day: "Terça-feira",
         sloganImage: "https://res.cloudinary.com/dh39ahmpj/image/upload/v1729206402/the-film-db/parallaxes/parallax8_evhw0t.jpg",
-        sloganGradient: {
-            backgroundColor: "rgb(10,29,6)",
-            background: "linear-gradient(335deg, rgba(10,29,6,1) 29%, rgba(8,2,25,1) 100%);"
-        }
+        backgroundColor: "rgb(10,29,6)",
+        sloganCSS: "tercaCard",
+        emphasisText: "#257015"
     },
     {
         id: 3,
@@ -39,10 +36,9 @@ export const slogans: slogansInterface[] = [
         shortdescription: "A quarta-feira perfeita pede um bom filme.",
         day: "Quarta-feira",
         sloganImage: "https://res.cloudinary.com/dh39ahmpj/image/upload/v1729206402/the-film-db/parallaxes/parallax1_sucavw.jpg",
-        sloganGradient: {
-            backgroundColor: "rgb(13,29,60)",
-            background: "linear-gradient(335deg, rgba(13,29,60,1) 29%, rgba(8,2,25,1) 100%);"
-        }
+        backgroundColor: "rgb(13,29,60)",
+        sloganCSS: "quartaCard",
+        emphasisText: "#0e44ad"
     },
     {
         id: 4,
@@ -50,10 +46,9 @@ export const slogans: slogansInterface[] = [
         shortdescription: "Prepare-se para uma quinta cheia de emoções na tela.",
         day: "Quinta-feira",
         sloganImage: "https://res.cloudinary.com/dh39ahmpj/image/upload/v1729206402/the-film-db/parallaxes/parallax3_wxdv1x.jpg",
-        sloganGradient: {
-            backgroundColor: "rgb(33,7,7,1)",
-            background: "linear-gradient(335deg, rgba(33,7,7,1) 29%, rgba(10,2,25,1) 100%);"
-        }
+        backgroundColor: "rgb(33,7,7,1)",
+        sloganCSS: "quintaCard",
+        emphasisText: "#c32828"
     },
     {
         id: 5,
@@ -61,10 +56,9 @@ export const slogans: slogansInterface[] = [
         shortdescription: "Sexta é dia de muita ação e diversão com pipoca.",
         day: "Sexta-feira",
         sloganImage: "https://res.cloudinary.com/dh39ahmpj/image/upload/v1729206403/the-film-db/parallaxes/parallax4_fhkl9k.jpg",
-        sloganGradient: {
-            backgroundColor: "rgb(13,29,60)",
-            background: "linear-gradient(335deg, rgba(51,31,0,1) 29%, rgba(10,2,25,1) 100%);"
-        }
+        backgroundColor: "rgb(60, 51, 13)",
+        sloganCSS: "sextaCard",
+        emphasisText: "#bea22a"
     },
     {
         id: 6,
@@ -72,10 +66,9 @@ export const slogans: slogansInterface[] = [
         shortdescription: "Aproveite o sábado com uma maratona de filmes à sua escolha.",
         day: "Sábado",
         sloganImage: "https://res.cloudinary.com/dh39ahmpj/image/upload/v1729206402/the-film-db/parallaxes/parallax2_scvivz.jpg",
-        sloganGradient: {
-            backgroundColor: "rgb(33,7,7,1)",
-            background: "linear-gradient(335deg, rgba(33,7,7,1) 29%, rgba(10,2,25,1) 100%);"
-        }
+        backgroundColor: "rgb(60, 13, 54)",
+        sloganCSS: "sabadoCard",
+        emphasisText: "#b525b2"
     },
     {
         id: 7,
@@ -83,10 +76,9 @@ export const slogans: slogansInterface[] = [
         shortdescription: "Domingo é dia de assistir aos clássicos e reviver emoções.",
         day: "Domingo",
         sloganImage: "https://res.cloudinary.com/dh39ahmpj/image/upload/v1729206402/the-film-db/parallaxes/parallax5_s3pfom.jpg",
-        sloganGradient: {
-            backgroundColor: "rgb(13,29,60)",
-            background: "linear-gradient(335deg, rgba(13,29,60,1) 29%, rgba(8,2,25,1) 100%);"
-        }
+        backgroundColor: "rgb(13, 58, 60)",
+        sloganCSS: "domingoCard",
+        emphasisText: "#0e44ad"
     },
     {
         id: 8,
@@ -94,10 +86,9 @@ export const slogans: slogansInterface[] = [
         shortdescription: "Comece a semana explorando novas aventuras cinematográficas.",
         day: "Segunda-feira",
         sloganImage: "https://res.cloudinary.com/dh39ahmpj/image/upload/v1729206402/the-film-db/parallaxes/parallax7_flnlxl.jpg",
-        sloganGradient: {
-            backgroundColor: "rgb(13,29,60)",
-            background: "linear-gradient(335deg, rgba(13,29,60,1) 29%, rgba(8,2,25,1) 100%);"
-        }
+        backgroundColor: "rgb(13, 22, 60)",
+        sloganCSS: "segundaFeiraCard",
+        emphasisText: "#0e44ad"
     },
     {
         id: 9,
@@ -105,10 +96,9 @@ export const slogans: slogansInterface[] = [
         shortdescription: "Deixe a terça-feira mais assustadora com um bom filme de terror.",
         day: "Terça-feira",
         sloganImage: "https://res.cloudinary.com/dh39ahmpj/image/upload/v1729206402/the-film-db/parallaxes/parallax8_evhw0t.jpg",
-        sloganGradient: {
-            backgroundColor: "rgb(10,29,6)",
-            background: "linear-gradient(335deg, rgba(10,29,6,1) 29%, rgba(8,2,25,1) 100%);"
-        }
+        backgroundColor: "rgb(24, 60, 13)",
+        sloganCSS: "tercaFeiraCard",
+        emphasisText: "#257015"
     },
     {
         id: 10,
@@ -116,9 +106,8 @@ export const slogans: slogansInterface[] = [
         shortdescription: "Ria sem parar com as comédias imperdíveis desta quarta.",
         day: "Quarta-feira",
         sloganImage: "https://res.cloudinary.com/dh39ahmpj/image/upload/v1729206402/the-film-db/parallaxes/parallax1_sucavw.jpg",
-        sloganGradient: {
-            backgroundColor: "rgb(13,29,60)",
-            background: "linear-gradient(335deg, rgba(13,29,60,1) 29%, rgba(8,2,25,1) 100%);"
-        }
+        backgroundColor: "rgb(60, 13, 26)",
+        sloganCSS: "quartaFeiraCard",
+        emphasisText: "#0e44ad"
     },
 ]

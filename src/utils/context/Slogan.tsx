@@ -1,8 +1,6 @@
 import React from 'react'
 import { slogans, slogansInterface } from '../data/slogans'
 
-
-
 interface SloganProviderProps {
     children: React.ReactNode
 }
@@ -18,6 +16,7 @@ const SloganProvider: React.FC<SloganProviderProps> = ({ children }) => {
     const checkDay = () => {
         const date = new Date()
         date.getDay()
+        // const dayName = "segunda-feira"
         const dayName = date.toLocaleString('pt-BR', { weekday: 'long' })
         const slogan = slogans.find((slogan: slogansInterface) => slogan.day.toLocaleLowerCase() === dayName)
         if (slogan) {
@@ -27,15 +26,13 @@ const SloganProvider: React.FC<SloganProviderProps> = ({ children }) => {
                 shortdescription: slogan.shortdescription,
                 day: slogan.day,
                 sloganImage: slogan.sloganImage,
-                sloganGradient: {
-                    backgroundColor: slogan.sloganGradient.backgroundColor,
-                    background: slogan.sloganGradient.background
-                },
-            })
+                backgroundColor: slogan.backgroundColor,               
+                sloganCSS: slogan.sloganCSS,
+                emphasisText: slogan.emphasisText                
+                })
 
             const body = document.body
-            body.style.background = dynamicSlogan?.sloganGradient?.backgroundColor
-            body.style.background = dynamicSlogan?.sloganGradient?.background
+            body.style.background = dynamicSlogan?.backgroundColor            
         }
     }
 
@@ -44,9 +41,8 @@ const SloganProvider: React.FC<SloganProviderProps> = ({ children }) => {
     }, [])
 
     React.useEffect(() => {
-        if (dynamicSlogan.sloganGradient) {            
-            document.body.style.backgroundColor = dynamicSlogan.sloganGradient.backgroundColor
-            document.body.style.background = dynamicSlogan.sloganGradient.background
+        if (dynamicSlogan.backgroundColor) {
+            document.body.style.backgroundColor = dynamicSlogan.backgroundColor            
         }
     }, [dynamicSlogan])
 

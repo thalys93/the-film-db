@@ -14,3 +14,83 @@
     background: linear-gradient(335deg, rgba(19, 15, 15, 1) 0%, rgba(46, 25, 25, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#130f0f", endColorstr="#2e1919", GradientType=1);
 }
+
+.segundaCard {
+    background: rgb(30, 28, 32);
+    background: -moz-linear-gradient(335deg, rgba(30, 28, 32, 1) 0%, rgba(36, 25, 46, 1) 100%);
+    background: -webkit-linear-gradient(335deg, rgba(30, 28, 32, 1) 0%, rgba(36, 25, 46, 1) 100%);
+    background: linear-gradient(335deg, rgba(30, 28, 32, 1) 0%, rgba(36, 25, 46, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1e1c20", endColorstr="#24192e", GradientType=1);
+}
+
+.tercaCard {
+    background: rgb(10, 29, 6);
+        background: -moz-linear-gradient(335deg, rgba(10, 29, 6, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: -webkit-linear-gradient(335deg, rgba(10, 29, 6, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: linear-gradient(335deg, rgba(10, 29, 6, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0a1d06", endColorstr="#080219", GradientType=1);
+}
+
+.quartaCard {
+    background: rgb(13, 29, 60);
+        background: -moz-linear-gradient(335deg, rgba(13, 29, 60, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: -webkit-linear-gradient(335deg, rgba(13, 29, 60, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: linear-gradient(335deg, rgba(13, 29, 60, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0d1d3c", endColorstr="#080219", GradientType=1);
+}
+
+.quintaCard {
+    background: rgb(49, 6, 23);
+    background: -moz-linear-gradient(335deg, rgba(49, 6, 23, 1) 29%, rgba(8, 2, 25, 1) 100%);
+    background: -webkit-linear-gradient(335deg, rgba(49, 6, 23, 1) 29%, rgba(8, 2, 25, 1) 100%);
+    background: linear-gradient(335deg, rgba(49, 6, 23, 1) 29%, rgba(8, 2, 25, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#310617", endColorstr="#08021d", GradientType=1)
+}
+
+.sextaCard {
+    background: rgb(60, 51, 13);
+        background: -moz-linear-gradient(335deg, rgba(60, 51, 13, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: -webkit-linear-gradient(335deg, rgba(60, 51, 13, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: linear-gradient(335deg, rgba(60, 51, 13, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3c330d", endColorstr="#080219", GradientType=1);
+}
+
+.sabadoCard {
+    background: rgb(60, 13, 54);
+        background: -moz-linear-gradient(335deg, rgba(60, 13, 54, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: -webkit-linear-gradient(335deg, rgba(60, 13, 54, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: linear-gradient(335deg, rgba(60, 13, 54, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3c0d36", endColorstr="#080219", GradientType=1);
+}
+
+.domingoCard {
+    background: rgb(13, 58, 60);
+        background: -moz-linear-gradient(335deg, rgba(13, 58, 60, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: -webkit-linear-gradient(335deg, rgba(13, 58, 60, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: linear-gradient(335deg, rgba(13, 58, 60, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0d3a3c", endColorstr="#080219", GradientType=1);
+}
+
+.segundaFeiraCard {
+    background: rgb(13, 22, 60);
+        background: -moz-linear-gradient(335deg, rgba(13, 22, 60, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: -webkit-linear-gradient(335deg, rgba(13, 22, 60, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: linear-gradient(335deg, rgba(13, 22, 60, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0d163c", endColorstr="#080219", GradientType=1);
+}
+
+.tercaFeiraCard {
+    background: rgb(24, 60, 13);
+        background: -moz-linear-gradient(335deg, rgba(24, 60, 13, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: -webkit-linear-gradient(335deg, rgba(24, 60, 13, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: linear-gradient(335deg, rgba(24, 60, 13, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#183c0d", endColorstr="#080219", GradientType=1);
+}
+
+.quartaFeiraCard {
+    background: rgb(60, 13, 26);
+        background: -moz-linear-gradient(335deg, rgba(60, 13, 26, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: -webkit-linear-gradient(335deg, rgba(60, 13, 26, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        background: linear-gradient(335deg, rgba(60, 13, 26, 1) 0%, rgba(8, 2, 25, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3c0d1a", endColorstr="#080219", GradientType=1);
+}

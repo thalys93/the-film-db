@@ -1,6 +1,8 @@
 import { GithubLogo, InstagramLogo, LinkedinLogo, ReadCvLogo } from '@phosphor-icons/react'
+import React from 'react'
 import { Container, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { SloganContext } from '../../utils/context/Slogan'
 
 function FooterBar() {
     const actualYear = new Date().getFullYear()
@@ -10,8 +12,10 @@ function FooterBar() {
         { route: "https://www.linkedin.com/in/thalys-dev202/", icon: <LinkedinLogo weight='fill' color='white' size={25} className='transition-all hover:scale-95' /> },
         { route: "https://portifolio-luis-thalys.web.app/home", icon: <ReadCvLogo weight='fill' color='white' size={25} className='transition-all hover:scale-95' /> },
     ]
+    const { dynamicSlogan } = React.useContext(SloganContext)
+
     return (
-        <Navbar sticky='bottom' className='bg-[#1c1917]'>
+        <Navbar sticky='bottom' className={`${dynamicSlogan.sloganCSS}`}>
             <Container className='flex flex-row justify-evenly'>
                 <Navbar.Brand className='animate__animated animate__fadeIn'>
                     <Link to='/' className='flex flex-row gap-1 items-center text-slate-200 hover:text-red-400 transition-all font-inter uppercase ml-3 text-sm lg:text-lg'>
