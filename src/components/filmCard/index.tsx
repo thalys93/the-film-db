@@ -50,11 +50,11 @@ function FilmCard({ film, type }: { film: MoviesProps, type: FilmCardTypes }) {
                     </section>
                 </Card>
             )
-        case FilmCardTypes.carousel:
+        case FilmCardTypes.mobile:
             return (
                 <Card                    
-                    className={film.overview !== '' ? `${dynamicSlogan.sloganCSS} bg-red-700 mb-5 border-0 rounded shadow-md h-[22rem] w-[19rem]` : "bg-red-900 mb-5 border-0 rounded shadow-md h-[22rem] w-[15rem]"}>
-                    <Card.Img className={film.overview !== '' ? 'h-[10rem] w-[15rem] object-cover' : 'h-[10rem] w-[15rem] object-cover filter grayscale'}
+                    className={film.overview !== '' ? `${dynamicSlogan.sloganCSS} bg-red-700 mb-5 border-0 rounded shadow-md h-[22rem] w-[19rem] justify-center items-center` : "bg-red-900 mb-5 border-0 rounded shadow-md h-[22rem] w-[15rem]"}>
+                    <Card.Img className={film.overview !== '' ? 'h-[10rem] w-[19rem] object-cover' : 'h-[10rem] w-[15rem] object-cover filter grayscale'}
                         variant='top' src={film.poster_path !== "" ? `https://image.tmdb.org/t/p/w500${film.poster_path}` : "https://placehold.co/600x500"} />
                     <Card.Body className='select-none justify-evenly flex flex-col'>
                         <Card.Title className={film.overview !== '' ? 'text-stone-50 font-monts text-sm' : 'text-stone-500 font-monts text-sm'}>{film.title ? film.title : 'Carregando...'}</Card.Title>

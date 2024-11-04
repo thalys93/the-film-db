@@ -10,7 +10,7 @@ function NavigationBar() {
     const options = [
         { name: "Filmes", link: "/movies" },
         { name: "Séries", link: "/series" },
-        { name: "Categorias", link: "/categories" },
+        { name: "Categorias", link: "/categories", disabled: true },
     ]
 
     const [show, setShow] = React.useState(false)
@@ -55,7 +55,7 @@ function NavigationBar() {
                     <ul className='flex flex-col gap-2 justify-around items-start mt-3 ml-5'>
                         {options.map((opt, index) => (
                             <Link
-                                to={opt.link}
+                                to={opt.disabled ? "/" : opt.link}
                                 key={index}
                                 className='gap-3 flex flex-col w-[10rem]'>
                                 <span
@@ -66,16 +66,16 @@ function NavigationBar() {
                             </Link>
                         ))}
                         <Link to={"/about"} className='gap-3 flex flex-col w-[10rem]'>
-                            <span 
-                            style={{ backgroundColor: dynamicSlogan?.backgroundColor }}
-                            className='text-slate-200 hover:text-stone-50 transition-all font-monts uppercase p-2 bg-red-500 hover:bg-red-600 shadow-lg'>
+                            <span
+                                style={{ backgroundColor: dynamicSlogan?.backgroundColor }}
+                                className='text-slate-200 hover:text-stone-50 transition-all font-monts uppercase p-2 bg-red-500 hover:bg-red-600 shadow-lg'>
                                 Sobre
                             </span>
                         </Link>
                         <button className='gap-3 flex flex-col mt-[25rem]' onClick={() => closeMenu()}>
-                            <span 
-                            style={{ borderColor: dynamicSlogan?.backgroundColor, color: 'white' }}
-                            className='w-[10rem] text-left text-red-500 hover:text-red-50 transition-all font-monts uppercase p-2 border-[2px] border-red-500 hover:bg-red-600 shadow-lg'>
+                            <span
+                                style={{ borderColor: dynamicSlogan?.backgroundColor, color: 'white' }}
+                                className='w-[10rem] text-left text-red-500 hover:text-red-50 transition-all font-monts uppercase p-2 border-[2px] border-red-500 hover:bg-red-600 shadow-lg'>
                                 Fechar
                             </span>
                         </button>
@@ -90,21 +90,36 @@ function NavigationBar() {
                     <img src='/png/favicon.png' className='w-[2rem] object-cover' />
                     <Link to='/' className={location.pathname === '/' ? "text-red-400 uppercase font-semibold" : "uppercase font-semibold text-stone-50"}>The Film DB</Link>
                     <div className='flex flex-row gap-4 ml-[4rem]'>
-                        {options.map((opt, index) => (
-                            <Link to={opt.link} key={index}>
-                                <span className={location.pathname === opt.link ? "text-red-400 hover:text-red-300 transition-all underline underline-offset-4 " : 'text-stone-50 hover:text-red-400 transition-all'}>
-                                    {opt.name}
-                                </span>
-                            </Link>
-                        ))}
+                        {options.map((opt, index) => 
+                            !opt.disabled ? (
+                                <Link to={opt.link} key={index}>
+                                    <span className={location.pathname === opt.link ? "text-red-400 hover:text-red-300 transition-all underline underline-offset-4 " : 'text-stone-50 hover:text-red-400 transition-all'}>
+                                        {opt.name}
+                                    </span>
+                                </Link>
+                            ) : (
+                                <button disabled key={index}>
+                                        <span className={location.pathname === opt.link ? "text-red-700 hover:text-red-300 transition-all underline underline-offset-4 uppercase" : 'text-stone-500 hover:text-red-400 transition-all uppercase'}>
+                                        {opt.name}
+                                    </span>
+                                </button>
+                            )
+                        
+                        )}
                     </div>
                 </div>
                 <div>
-                    <Link to={"/about"}>
+                    {/* todo: desativado até desenvolve a tela */}
+                    {/* <Link to={"/about"}>
                         <span className={location.pathname === "/about" ? "text-red-400 hover:text-red-300 transition-all underline underline-offset-4 " : 'text-stone-50 hover:text-red-400 transition-all'}>
                             Sobre
                         </span>
-                    </Link>
+                    </Link> */}
+                        <button disabled >
+                            <span className={'text-stone-500 hover:text-red-400 transition-all uppercase'}>
+                                Sobre
+                            </span>
+                        </button>
                 </div>
             </nav>
         </Container>

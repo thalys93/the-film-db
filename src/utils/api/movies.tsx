@@ -279,7 +279,7 @@ export const getBrasilianSerie = async (id: number) => {
     }
 }
 
-export const getBrasilianSeries = async () => {
+export const getBrasilianSeries = async (page?: number) => {
     try {
         return await API_URL.get(`discover/tv`, {
             headers: {
@@ -288,9 +288,9 @@ export const getBrasilianSeries = async () => {
             },
             params: {
                 api_key: apiKey,
-                include_adult: false,
+                include_adult: false,                                
                 include_null_first_air_dates: false,
-                page: 1,
+                page: page ? page : 1,
                 language: 'pt-BR',
                 sort_by: 'popularity.desc'
             }

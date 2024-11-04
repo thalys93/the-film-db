@@ -62,9 +62,17 @@ function Movies() {
     getGenders()
   }, [])
 
-  async function handleShowMoreFilms(count: number) {
+  async function handleShowMoreFilms(count: number, mobile: boolean) {
     setIsLoading(true)
 
+    if (mobile) {
+      const scrollContainer = document.querySelector('#movieScrollBar');
+      if (scrollContainer) {
+        const contentWidth = scrollContainer.scrollWidth;
+        const scrollLeft = contentWidth - scrollContainer.clientWidth;
+        scrollContainer.scrollLeft = scrollLeft;
+      }
+    }
     await getBrasilianMovies(count).then((res: commonRequest) => {
       if (res.results !== undefined) {
         setTimeout(() => {
@@ -114,29 +122,32 @@ function Movies() {
                   <section key={movie.id}>
                     <Row>
                       <Col>
-                        <article className='absolute z-10 flex flex-col gap-1 items-start justify-start ml-[6rem] mt-[3rem]'>
-                          <span className='text-stone-50 font-robt uppercase text-xl select-none'>{movie.release_date.split("-")[0]}</span>
-                          <h1 className='text-stone-50 text-4xl font-robt uppercase'>{movie.title} / <b className='text-red-700'>{movie.original_title}</b></h1>
-                          <p className='text-stone-300 font-robt capitalize text-md w-[35rem] text-left mb-3'>{movie.overview ? movie.overview.slice(0, 240) + '...' : 'Sem descrição disponível.'}</p>
-
-                          {movie.video ? (
-                            <button className={` ${dynamicSlogan.sloganCSS} bg-red-500 w-[15rem] items-center flex flex-row justify-center gap-3 p-2 rounded-sm transition-all hover:bg-red-300`}>
-                              <Play size={25} color='white' className='transition-all hover:scale-95' />
-                              <span className='text-stone-50 font-robt uppercase'> Veja o Trailer </span>
-                            </button>
-                          ) : (
-                            <button className={` ${dynamicSlogan.sloganCSS} bg-red-500 w-[15rem] items-center flex flex-row justify-center gap-3 p-2 rounded-sm transition-all hover:bg-red-300`}>
-                              <Info size={25} color='white' weight='fill' className='transition-all hover:scale-95' />
-                              <span className='text-stone-50 font-robt uppercase'> Saiba Mais </span>
-                            </button>
-                          )}
+                        <article className='absolute z-10 flex flex-col gap-1 lg:items-start items-start lg:justify-start lg:ml-[6rem] lg:mt-[3rem] mt-3 ml-3'>
+                          <span className='text-stone-50 font-robt uppercase lg:text-xl text-sm select-none'>{movie.release_date.split("-")[0]}</span>
+                          <h1 className='text-stone-50 lg:text-4xl font-robt uppercase'>{movie.title} / <b className='text-red-700'>{movie.original_title}</b></h1>
+                          <p className='text-stone-300 font-robt capitalize lg:text-md lg:w-[35rem] m-3 lg:m-0 text-left lg:mb-3 mb-[5rem]'>{movie.overview ? movie.overview.slice(0, 240) + '...' : 'Sem descrição disponível.'}</p>
+                          <article className='ml-4 lg:ml-0'>
+                            {movie.video ? (
+                              <button className={` ${dynamicSlogan.sloganCSS} bg-red-500 w-[15rem] items-center flex flex-row justify-center gap-3 p-2 rounded-sm transition-all hover:bg-red-300`}>
+                                <Play size={25} color='white' className='transition-all hover:scale-95' />
+                                <span className='text-stone-50 font-robt uppercase'> Veja o Trailer </span>
+                              </button>
+                            ) : (
+                              <button className={` ${dynamicSlogan.sloganCSS} bg-red-500 w-[15rem] items-center flex flex-row justify-center gap-3 p-2 rounded-sm transition-all hover:bg-red-300`}>
+                                <Info size={25} color='white' weight='fill' className='transition-all hover:scale-95' />
+                                <span className='text-stone-50 font-robt uppercase'> Saiba Mais </span>
+                              </button>
+                            )}
+                          </article>
                         </article>
                       </Col>
-                      <Col>
-                        <article className='absolute z-10 ml-[20rem] mt-[3rem]'>
-                          <FilmCard film={movie} type={FilmCardTypes.header} />
-                        </article>
-                      </Col>
+                      {winSize > 768 && (
+                        <Col>
+                          <article className='absolute z-10 ml-[20rem] mt-[3rem]'>
+                            <FilmCard film={movie} type={FilmCardTypes.header} />
+                          </article>
+                        </Col>
+                      )}
                     </Row>
                     <img className='h-[25rem] object-cover opacity-30' src={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : "https://placehold.co/600x500"} alt={movie.title} />
                   </section>
@@ -170,7 +181,7 @@ function Movies() {
                 <article className='items-end flex justify-end'>
                   <button
                     disabled={isLoading}
-                    onClick={() => handleShowMoreFilms(moviesList.length)}
+                    onClick={() => handleShowMoreFilms(moviesList.length, false)}
                     className={`${dynamicSlogan.sloganCSS} bg-red-500 w-[10rem] h-[3rem] items-center flex flex-row justify-center gap-3 p-2 rounded transition-all hover:bg-red-300 mb-5 relative mr-[10rem] shadow-md`}>
                     {isLoading ? (
                       <Spinner className='text-stone-50' />
@@ -199,24 +210,17 @@ function Movies() {
               </section>
             ) : (
               <section>
-                <Carousel
-                  showArrows={true}
-                  showStatus={false}
-                  showThumbs={false}
-                  infiniteLoop={true}
-                  transitionTime={200}
-                  stopOnHover={true}
-                  showIndicators={false}>
+                <article id='movieScrollBar' className='flex flex-row overflow-x-scroll flex-nowrap gap-4'>
                   {moviesList.map((movie) => (
-                    <section key={movie.id} className='flex justify-center items-center'>
-                      <FilmCard film={movie} type={FilmCardTypes.carousel} />
-                    </section>
+                    <article className='flex w-[16rem] gap-3'>
+                      <FilmCard film={movie} key={movie.id} type={FilmCardTypes.mobile} />
+                    </article>
                   ))}
-                </Carousel>
+                </article>
                 <article className='flex flex-row justify-center items-center gap-3'>
                   <button
                     disabled={isLoading}
-                    onClick={() => handleShowMoreFilms(moviesList.length)}
+                    onClick={() => handleShowMoreFilms(moviesList.length, true)}
                     className='bg-red-500 w-[10rem] h-[3rem] items-center flex flex-row justify-center gap-3 p-2 rounded transition-all hover:bg-red-300 mb-5 relative shadow-md'>
                     {isLoading ? (
                       <Spinner className='text-stone-50' />
@@ -228,9 +232,9 @@ function Movies() {
                     )}
                   </button>
 
-                  <button className='border-[1px] border-red-500 w-[10rem] h-[3rem] items-center flex flex-row justify-center gap-3 p-2 rounded transition-all hover:bg-red-300 mb-5 relative shadow-md group'>
+                  {/* <button className='border-[1px] border-red-500 w-[10rem] h-[3rem] items-center flex flex-row justify-center gap-3 p-2 rounded transition-all hover:bg-red-300 mb-5 relative shadow-md group'>
                     <span className='text-red-500 font-robt uppercase group-hover:text-stone-50'> Ver Todos </span>
-                  </button>
+                  </button> */}
                 </article>
               </section>
             )}
