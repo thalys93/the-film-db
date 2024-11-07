@@ -72,7 +72,7 @@ function Home() {
                 <span className='text-xl font-robtMono text-stone-50 transition-all uppercase'> Quero Assinar</span>
               </button>
 
-              <span className='text-stone-600 select-none font-robtMono text-center mt-4 uppercase font-bold opacity-50'>Todos os planos possuem 7 dias gratuítos para teste</span>
+              <span className='text-stone-600 select-none font-robtMono text-center mt-4 uppercase font-bold'>Todos os planos possuem 7 dias gratuítos para teste</span>
             </section>
           </ParallaxBanner>
         </Parallax>
