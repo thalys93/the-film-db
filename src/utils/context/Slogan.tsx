@@ -26,10 +26,10 @@ const SloganProvider: React.FC<SloganProviderProps> = ({ children }) => {
                 shortdescription: slogan.shortdescription,
                 day: slogan.day,
                 sloganImage: slogan.sloganImage,
-                backgroundColor: slogan.backgroundColor,               
+                backgroundColor: slogan.backgroundColor,
                 sloganCSS: slogan.sloganCSS,
-                emphasisText: slogan.emphasisText                
-                })
+                emphasisText: slogan.emphasisText
+            })
 
             const body = document.body
             body.style.background = dynamicSlogan?.backgroundColor            
@@ -42,7 +42,7 @@ const SloganProvider: React.FC<SloganProviderProps> = ({ children }) => {
 
     React.useEffect(() => {
         if (dynamicSlogan.backgroundColor) {
-            document.body.style.backgroundColor = dynamicSlogan.backgroundColor            
+            document.body.style.backgroundColor = dynamicSlogan.backgroundColor
         }
     }, [dynamicSlogan])
 

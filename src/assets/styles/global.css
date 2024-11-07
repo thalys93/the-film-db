@@ -3,6 +3,14 @@
     background: var(--slogan-background-color);
 }
 
+body {
+    background-image: url("/img/movie-pattern-10.png");    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: darken;
+}
+
 .offcanvas {
     --bs-offcanvas-width: 60%;
 }

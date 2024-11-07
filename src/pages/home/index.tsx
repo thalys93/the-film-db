@@ -4,6 +4,7 @@ import BillingCard from '../../components/pricingCard'
 import { billingList, billingProps } from '../../utils/api/billing'
 import { Parallax, ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax'
 import { SloganContext } from '../../utils/context/Slogan'
+import { Link } from 'react-router-dom'
 
 function Home() {  
   const { dynamicSlogan} = React.useContext(SloganContext)
@@ -23,13 +24,13 @@ function Home() {
             </article>
 
             <article className='flex flex-row gap-4 items-center justify-center'>
-              <a href='https://github.com/thalys93/the-film-db/tree/main' target='_blank' rel='noopener'> {/* todo: mudar o link do github */}
+              <Link to='/about' >
                 <button className={`${dynamicSlogan.sloganCSS} bg-red-500 text-stone-50 p-2 w-[10rem] items-center justify-center hover:bg-red-300 transition-all`}>
                   <span className='uppercase '>
                     Saiba Mais
                   </span>
                 </button>
-              </a>
+              </Link>
 
               <div className='h-[3rem] w-[0.5px] bg-stone-50 select-none'></div>
 
@@ -43,14 +44,14 @@ function Home() {
         </Col>
 
         <Col sm>
-          <img src={dynamicSlogan.sloganImage} className='bg-blend-lighten mix-blend-lighten mt-5 h-[30rem] object-cover rounded-lg opacity-50' />
+          <img src={dynamicSlogan.sloganImage} className='mt-5 h-[30rem] object-cover rounded-lg opacity-100' />
         </Col>
       </Row>
 
       <Row className='mt-[18%]' id='pricing'>
         <Parallax className='pt-4 pb-5'>
           <ParallaxBanner className='rounded-lg'>
-            <ParallaxBannerLayer image={`/img/parallax5.jpg`} speed={-10} className='opacity-10 mix-blend-color-dodge' />
+            <ParallaxBannerLayer image={`/img/parallax5.jpg`} speed={-10} className='opacity-20 mix-blend-darken' />
             <section className='flex flex-col justify-center items-center pt-3 pb-3'>
               <article className='flex justify-center items-center'>
                 <h1 className='text-3xl text-stone-50 uppercase'> Nossos Planos </h1>
