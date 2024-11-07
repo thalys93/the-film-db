@@ -12,36 +12,37 @@ export const billingList: billingProps[] = [
         id: 1,
         name: 'Plano Básico',
         price: 9.99,
-        description: 'Plano básico para quem deseja assistir filmes e séries sem limites.',
+        description: 'Básico para quem deseja assistir filmes sem limites',
         features: [
-            'Filmes e Séries Ilimitados',
             'Qualidade HD',
-            'Suporte 24/7',
-            'Cancelamento a qualquer momento'
-        ]         
+            'Sem Anuncios',
+            'Suporte Semanal',
+            "Catálogo Imenso de Filmes"
+        ]
     },
     {
-        id: 2, 
+        id: 2,
         name: 'Plano Padrão',
         price: 14.99,
-        description: 'Plano padrão para quem deseja assistir filmes e séries sem limites.',
+        description: 'Padrão para quem deseja assistir filmes e séries sem limites',
         features: [
-            'Filmes e Séries Ilimitados',
-            'Qualidade HD e Ultra HD',
-            'Suporte 24/7',
-            'Cancelamento a qualquer momento'
-        ]        
+            'Qualidade HD e Full-HD',
+            'Sem Anuncios',
+            'Suporte Semanal',
+            'Catálogo de Filmes e Séries'
+        ]
     },
     {
         id: 3,
         name: 'Plano Premium',
         price: 19.99,
-        description: 'Plano premium para quem deseja assistir filmes e séries sem limites.',
+        description: 'Premium para aqueles que levam filmes e séries a sério',
         features: [
-            'Filmes e Séries Ilimitados ',
-            'Qualidade HD e Ultra HD',
-            'Sem Anúncios ',                        
-            'Cancelamento a qualquer momento'
-        ]        
+            'Qualidade HD e Full-HD e 4K',
+            'Sem Anuncios',
+            'Suporte 24/7',
+            'Catálogo de Filmes e Séries',
+            'Extra e Bloopers de Filmes'
+        ]
     }
 ]
